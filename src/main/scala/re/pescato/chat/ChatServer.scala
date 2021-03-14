@@ -12,7 +12,7 @@ import scala.language.postfixOps
 /**
  * Represents the entry point of the application.
  * <br/>
- * Implements a Chat Server build using the TCP features of Akka 2.6
+ * Implements a Chat Server built using the TCP features of Akka 2.6
  */
 object ChatServer {
 
