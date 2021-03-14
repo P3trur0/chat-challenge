@@ -10,7 +10,7 @@ import scala.collection.mutable.ListBuffer
  * ADT representing broadcaster messages
  */
 sealed trait BroadcasterMessage
-case class BroadcastSubscription(i: ActorRef) extends BroadcasterMessage
+case class BroadcastSubscription(subscriber: ActorRef) extends BroadcasterMessage
 
 /**
  * Implements the broadcasting logic holding an inner list buffer of all the client connections.
@@ -21,9 +21,9 @@ class Broadcaster extends Actor with ActorLogging {
   var subscribers = new ListBuffer[ActorRef]()
 
   def receive: Receive = {
-    case BroadcastSubscription(i) => {
-      log.info(s"${i.path.name} client subscribed!")
-      subscribers.append(i)
+    case BroadcastSubscription(subscriber) => {
+      log.info(s"${subscriber.path.name} client subscribed!")
+      subscribers.append(subscriber)
     }
 
     case Received(data) => {

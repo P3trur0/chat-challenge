@@ -17,7 +17,7 @@ import scala.language.postfixOps
 object ChatServer {
 
   //setting up resources
-  implicit val actorSystem = ActorSystem("actor-system")
+  implicit val actorSystem: ActorSystem = ActorSystem("actor-system")
   val messageBroadcasterHandler: ActorRef = actorSystem.actorOf(Props[Broadcaster])
 
   //defining main actor implementing the TCP server
